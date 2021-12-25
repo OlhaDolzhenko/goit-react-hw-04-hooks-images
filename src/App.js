@@ -30,7 +30,7 @@ function App() {
     setStatus(Status.PENDING);
     API.fetchImages(search, page)
       .then(data => {
-        setImages(images => [...images, ...data.hits]);
+        setImages(data.hits);
         setPage(page => page + 1);
         setStatus(Status.RESOLVED);
       })
@@ -64,6 +64,7 @@ function App() {
   };
 
   const handleFormSubmit = search => {
+    setPage(1);
     setSearch(search);
   };
 
